@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#8BC34A"
+    android:orientation="vertical"
+    tools:context=".ActivityAddsach">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Danh sách sách có trong thư viện"
+        android:textColor="#111"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/editMaSach"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:hint="Nhập mã sách" />
+
+        <EditText
+            android:id="@+id/editTenSach"
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:hint="Nhập tên sách" />
+
+        <EditText
+            android:id="@+id/editTacGia"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:hint="Nhập tên tác giả" />
+
+        <EditText
+            android:id="@+id/editNhaXB"
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:hint="Nhập nhà xuất bản" />
+
+        <EditText
+            android:id="@+id/editNamXB"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:hint="Nhập năm xuất bản" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center">
+        <Button
+            android:id="@+id/btnAdd"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="Thêm mới"/>
+        <Button
+            android:id="@+id/btnExit"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="Thoát"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ListView
+            android:id="@+id/listBook"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </ListView>
+    </LinearLayout>
+</LinearLayout>

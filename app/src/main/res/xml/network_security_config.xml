@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <network-security-config>
+        <base-config cleartextTrafficPermitted="true" />
+        <domain-config>
+            <domain includeSubdomains="true">secure.example.com</domain>
+            <domain includeSubdomains="true">cdn.example.com</domain>
+            <domain includeSubdomains="true">localhost:81</domain>
+            <domain includeSubdomains="true">192.168.1.3</domain>
+        </domain-config>
+        <debug-overrides>
+            <trust-anchors>
+                <certificates overridePins="true" src="user" />
+            </trust-anchors>
+        </debug-overrides>
+    </network-security-config>
+</resources>
