@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -34,6 +35,7 @@ import okhttp3.Response;
 
 public class Activitysach extends AppCompatActivity {
     ImageView im_edit, im_delete, im_Add;
+    EditText editSach;
     TextView txtTenSach;
     ArrayList<Sach> arraySach;
     SachAdapter sachAdapter;
@@ -42,6 +44,7 @@ public class Activitysach extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_activitysach);
+        editSach=(EditText)findViewById(R.id.editTenSach);
         im_edit = (ImageView) findViewById(R.id.im_edit);
         im_delete = (ImageView) findViewById(R.id.im_delete);
         im_Add = (ImageView) findViewById(R.id.im_add);
@@ -102,20 +105,21 @@ public void UpdateSach(){
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 // Lấy thông tin JSON trả về. Bạn có thể log lại biến json này để xem nó như thế nào.
-                String json = response.body().string();
+                final String json = response.body().string();
                 final List<Sach> sach = jsonAdapter.fromJson(json);
                 // Cho hiển thị lên RecyclerView.
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        listSach.setAdapter((ListAdapter) new AdapterSach(Activitysach.this, R.layout.list_item_sach, sach));
-//                        rvSach.setAdapter(new SachAdapter(sach, Activitysach.this));
-                        listSach.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                            @Override
-                            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                                Toast.makeText(Activitysach.this, "" + i, Toast.LENGTH_LONG).show();
-                            }
-                        });
+                        listSach.setAdapter( new AdapterSach(Activitysach.this, R.layout.list_item_sach, sach));
+//                        listSach.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//                            @Override
+//                            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                                Sach sach= arraySach.get(i);
+//                                editSach.setText(sach.TenSach);
+//                                Toast.makeText(Activitysach.this, "" + i, Toast.LENGTH_LONG).show();
+//                            }
+//                        });
                     }
                 });
             }

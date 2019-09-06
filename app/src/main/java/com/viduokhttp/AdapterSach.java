@@ -1,6 +1,7 @@
 package com.viduokhttp;
 
 import android.content.Context;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,6 +37,7 @@ public class AdapterSach extends BaseAdapter {
     private class ViewHolder {
         TextView tenSach, MaSach, TenNXB, TenTacGia;
         int namxb;
+        ImageView imgEdit, imgDelete;
     }
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
@@ -48,7 +50,8 @@ public class AdapterSach extends BaseAdapter {
             holder.tenSach = (TextView) view.findViewById(R.id.tv_Tensach);
             holder.TenTacGia = (TextView) view.findViewById(R.id.tv_tacgia);
             holder.TenNXB = (TextView) view.findViewById(R.id.tv_Nxb);
-//            holder.namxb = (ImageView) view.findViewById(R.id.im_edit);
+            holder.imgEdit = (ImageView) view.findViewById(R.id.im_edit);
+            holder.imgDelete = (ImageView) view.findViewById(R.id.im_delete);
             view.setTag(holder);
         } else {
             holder = (ViewHolder) view.getTag();
@@ -58,20 +61,6 @@ public class AdapterSach extends BaseAdapter {
         holder.tenSach.setText(sach.TenSach);
         holder.TenTacGia.setText(sach.TenTacGia);
         holder.TenNXB.setText(sach.TenNXB);
-//        holder.imgEdit.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(context, UpdateLoaihang.class);
-//                intent.putExtra("dataLoaiHang", loaihang);
-//                context.startActivity(intent);
-//            }
-//        });
-//        holder.imgDelete.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                XacNhanXoa(loaihang.getTenLH(), loaihang.getId());
-//            }
-//        });
         return view;
     }
 }

@@ -25,7 +25,12 @@
         android:layout_gravity="right"
         android:layout_marginRight="20dp"
         android:src="@drawable/addnew"></ImageView>
+<EditText
+    android:id="@+id/editTenSach"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
+</EditText>
     <ListView
         android:id="@+id/listSach"
         android:layout_width="match_parent"
