@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#8BC34A"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/tv_MaTG"
+        android:layout_width="40dp"
+        android:layout_height="30dp"
+        android:textColor="#111"></TextView>
+
+    <TextView
+        android:id="@+id/tv_TenTG"
+        android:layout_width="120dp"
+        android:layout_height="30dp"
+        android:textColor="#111"></TextView>
+
+    <TextView
+        android:id="@+id/tv_DiaChi"
+        android:layout_width="120dp"
+        android:layout_height="30dp"
+        android:textColor="#111"></TextView>
+
+    <TextView
+        android:id="@+id/tv_DienThoai"
+        android:layout_width="120dp"
+        android:layout_height="30dp"
+        android:textColor="#111"></TextView>
+</LinearLayout>

@@ -2,6 +2,7 @@ package com.viduokhttp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,8 +11,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -44,12 +51,17 @@ public class ActivityAddsach extends AppCompatActivity {
                 tentacgia = editTenTG.getText().toString().trim();
                 tennxb = editNXB.getText().toString().trim();
                 namxb = Integer.parseInt(editNamXB.getText().toString().trim());
-                new postSach(masach, tensach, tentacgia, tennxb, namxb).execute("http://192.168.26.111/apiqltv/addSach.php");
-                XoaEditText();
+                new AddSach(masach, tensach, tentacgia, tennxb, namxb).execute("http://192.168.26.111:1337/Saches/");
+//                new postSach(masach, tensach, tentacgia, tennxb, namxb).execute("http://192.168.56.168/apiqltv/addSach.php");
+//                XoaEditText();
+                finish();
+                Intent intent =new Intent(ActivityAddsach.this,Activitysach.class);
+                startActivity(intent);
             }
         });
     }
-//Ánh xạ các biến
+
+    //Ánh xạ các biến
     private void AnhXa() {
         editMaSach = (EditText) findViewById(R.id.editMaSach);
         editTenSach = (EditText) findViewById(R.id.editTenSach);
@@ -60,14 +72,77 @@ public class ActivityAddsach extends AppCompatActivity {
         btnExit = (Button) findViewById(R.id.btnExit);
         lvSach = (ListView) findViewById(R.id.listBook);
     }
-//Xoá các EditText
-    private void XoaEditText(){
+
+    //Xoá các EditText
+    private void XoaEditText() {
         editMaSach.setText("");
         editTenSach.setText("");
         editTenTG.setText("");
         editNXB.setText("");
         editNamXB.setText("");
     }
+
+    //
+    class AddSach extends AsyncTask<String, Void, String> {
+        OkHttpClient client = new OkHttpClient.Builder()
+                .build();
+        String masach, tensach, tentacgia, tennxb;
+        int namxb;
+
+        public AddSach(String masach, String tensach, String tentacgia, String tennxb, int namxb) {
+            this.masach = masach;
+            this.tensach = tensach;
+            this.tentacgia = tentacgia;
+            this.tennxb = tennxb;
+            this.namxb = namxb;
+        }
+
+        @Override
+        protected String doInBackground(String... strings) {
+            MediaType mediaType = MediaType.parse("application/json");
+            JSONObject postdata = new JSONObject();
+            try {
+                postdata.put("MaSach", masach);
+                postdata.put("TenSach", tensach);
+                postdata.put("TenTacGia", tentacgia);
+                postdata.put("TenNXB", tennxb);
+                postdata.put("NamXB", namxb);
+            } catch (JSONException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            RequestBody body = RequestBody.create(mediaType, postdata.toString());
+            Request request = new Request.Builder()
+//                    .url("http://192.168.56.168:1337/Saches/")
+                    .url(strings[0])
+                    .method("POST", body)
+                    .addHeader("Content-Type", "application/json")
+                    .build();
+            try {
+                Response response = client.newCall(request).execute();
+                return response.body().string();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            client.newCall(request).enqueue(new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    String mMessage = e.getMessage().toString();
+                    Log.w("failure Response", mMessage);
+                    //call.cancel();
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    String mMessage = response.body().string();
+                    Log.e("AAA", mMessage);
+                }
+            });
+            return null;
+        }
+    }
+
+    //
     class postSach extends AsyncTask<String, Void, String> {
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 .build();
@@ -81,6 +156,7 @@ public class ActivityAddsach extends AppCompatActivity {
             this.tennxb = tennxb;
             this.namxb = namxb;
         }
+
 
         @Override
         protected String doInBackground(String... strings) {

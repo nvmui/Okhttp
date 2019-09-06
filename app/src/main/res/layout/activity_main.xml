@@ -46,8 +46,13 @@
         android:text="Load Nhân Viên"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
-
     </Button>
+    <Button
+        android:id="@+id/btnTacGia"
+        android:text="List Tác Giả"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"></Button>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_users"
         android:layout_width="match_parent"

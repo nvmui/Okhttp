@@ -32,20 +32,21 @@ import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
     private final String URL = "http://i2.kym-cdn.com/photos/images/newsfeed/000/101/781/Y0UJC.png";
-    Button downloadBtn, btnGetUrl, btnListSach, btnNhanvien;
+    Button downloadBtn, btnGetUrl, btnListSach, btnNhanvien, btnTacGia;
     ImageView mImage;
     ListView lvUser;
     ArrayList<User> arrayUser;
     UserAdapter userAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        btnListSach=(Button) findViewById(R.id.btnSach);
+        btnListSach = (Button) findViewById(R.id.btnSach);
         btnListSach.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(MainActivity.this, Activitysach.class);
+                Intent intent = new Intent(MainActivity.this, Activitysach.class);
                 startActivity(intent);
             }
         });
@@ -53,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         btnGetUrl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(MainActivity.this, Activitygeturl.class);
+                Intent intent = new Intent(MainActivity.this, Activitygeturl.class);
                 startActivity(intent);
             }
         });
@@ -83,17 +84,25 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         getData();
-        btnNhanvien=(Button)findViewById(R.id.btnNhanVien);
+        btnNhanvien = (Button) findViewById(R.id.btnNhanVien);
         btnNhanvien.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(MainActivity.this, ActivityNhanvien.class);
+                Intent intent = new Intent(MainActivity.this, ActivityNhanvien.class);
                 startActivity(intent);
             }
         });
-
+        btnTacGia = (Button) findViewById(R.id.btnTacGia);
+        btnTacGia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, ActivityTacgia.class);
+                startActivity(intent);
+            }
+        });
     }
-    public void getData(){
+
+    public void getData() {
         final RecyclerView rvUsers = (RecyclerView) findViewById(R.id.rv_users);
         rvUsers.setLayoutManager(new LinearLayoutManager(this));
         // Khởi tạo OkHttpClient để lấy dữ liệu.

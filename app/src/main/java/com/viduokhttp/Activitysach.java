@@ -10,6 +10,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,8 +26,10 @@ import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class Activitysach extends AppCompatActivity {
@@ -40,18 +44,36 @@ public class Activitysach extends AppCompatActivity {
         setContentView(R.layout.activity_activitysach);
         im_edit = (ImageView) findViewById(R.id.im_edit);
         im_delete = (ImageView) findViewById(R.id.im_delete);
-        im_Add=(ImageView)findViewById(R.id.im_add);
+        im_Add = (ImageView) findViewById(R.id.im_add);
         im_Add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(Activitysach.this, ActivityAddsach.class);
+                Intent intent = new Intent(Activitysach.this, ActivityAddsach.class);
                 startActivity(intent);
+                finish();
             }
         });
         getData();
     }
-
+public void UpdateSach(){
+    OkHttpClient client = new OkHttpClient().newBuilder()
+            .build();
+    MediaType mediaType = MediaType.parse("application/json");
+    RequestBody body = RequestBody.create(mediaType, "{\r\n    \"TenSach\": \"Lập trình di động\",\r\n    \"TenTacGia\": \"Nguyễn Đình Thà\",\r\n    \"TenNXB\": \"CĐ Kế Hoạch ĐN\",\r\n    \"NamXB\": \"2019\"\r\n}");
+    Request request = new Request.Builder()
+            .url("192.168.57.191:1337/saches/5d5b920509e75a05c0b79dfb")
+            .method("PUT", body)
+            .addHeader("Content-Type", "application/json")
+            .addHeader("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZDQ1NTk3MjhiZTA1MzJhZDg3NDFjODMiLCJpZCI6IjVkNDU1OTcyOGJlMDUzMmFkODc0MWM4MyIsImlhdCI6MTU2NzY3MTEwMSwiZXhwIjoxNTcwMjYzMTAxfQ.xUdryjfLBwNHMb7LHzIwrVJaML_oOMcT5yL7JTLY1V8")
+            .build();
+    try {
+        Response response = client.newCall(request).execute();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
     public void getData() {
+        final ListView listSach = (ListView) findViewById(R.id.listSach);
         final RecyclerView rvSach = (RecyclerView) findViewById(R.id.rv_sach);
         rvSach.setLayoutManager(new LinearLayoutManager(this));
         // Khởi tạo OkHttpClient để lấy dữ liệu.
@@ -63,7 +85,8 @@ public class Activitysach extends AppCompatActivity {
         // Tạo request lên server.
         Request request = new Request.Builder()
 //                .url("http://192.168.26.111/apiqltv/listSachAll.php")
-                .url("http://192.168.26.111/apiqltv/listSach.php")
+//                .url("http://192.168.57.191/apiqltv/listSach.php")
+                .url("http://192.168.26.111:1337/Saches")
                 .method("GET", null)
                 .addHeader("Content-Type", "application/json")
 //                .addHeader("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZDYzNDk0MjA2NjhkYTBlYTBhNWE2ZjMiLCJpZCI6IjVkNjM0OTQyMDY2OGRhMGVhMGE1YTZmMyIsImlhdCI6MTU2NzEzNTM5NSwiZXhwIjoxNTY5NzI3Mzk1fQ.E3_GLZsQQJ5kczZw-SzdWcf008ZPeQDbb1_Z-gKXfXs")
@@ -85,7 +108,14 @@ public class Activitysach extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        rvSach.setAdapter(new SachAdapter(sach, Activitysach.this));
+                        listSach.setAdapter((ListAdapter) new AdapterSach(Activitysach.this, R.layout.list_item_sach, sach));
+//                        rvSach.setAdapter(new SachAdapter(sach, Activitysach.this));
+                        listSach.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                                Toast.makeText(Activitysach.this, "" + i, Toast.LENGTH_LONG).show();
+                            }
+                        });
                     }
                 });
             }

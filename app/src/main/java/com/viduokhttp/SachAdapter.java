@@ -16,10 +16,17 @@ import java.util.List;
 public class SachAdapter extends RecyclerView.Adapter<SachAdapter.SachItemViewHolder> {
     private List<Sach> saches;
     private Context context;
+    private int layout;
 
     public SachAdapter(List<Sach> saches, Context c) {
         this.saches = saches;
         this.context = c;
+    }
+
+    public SachAdapter(Activitysach context, int layout, List<Sach> listSach) {
+        this.context = context;
+        this.layout = layout;
+        this.saches = listSach;
     }
 
     @Override
@@ -59,7 +66,7 @@ public class SachAdapter extends RecyclerView.Adapter<SachAdapter.SachItemViewHo
             tenSach = (TextView) itemView.findViewById(R.id.tv_Tensach);
             MaSach = (TextView) itemView.findViewById(R.id.tv_masach);
             TenNXB = (TextView) itemView.findViewById(R.id.tv_Nxb);
-            TacGia=(TextView)itemView.findViewById(R.id.tv_tacgia);
+            TacGia = (TextView) itemView.findViewById(R.id.tv_tacgia);
             im_edit = (ImageView) itemView.findViewById(R.id.im_edit);
             im_delete = (ImageView) itemView.findViewById(R.id.im_delete);
         }
