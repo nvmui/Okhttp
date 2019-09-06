@@ -30,7 +30,7 @@ public class Activitygeturl extends AppCompatActivity {
         btnChetUrl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               new Geturl().execute("http://192.168.1.4/apiqltv/listUser.php");
+               new Geturl().execute("http://192.168.1.3/apiqltv/listUser.php");
             }
         });
 

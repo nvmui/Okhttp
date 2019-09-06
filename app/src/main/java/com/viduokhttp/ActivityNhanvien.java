@@ -6,9 +6,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
@@ -47,7 +50,7 @@ public class ActivityNhanvien extends AppCompatActivity {
         final JsonAdapter<List<NhanVien>> jsonAdapter = moshi.adapter(nhanvienType);
         // Tạo request lên server.
         Request request = new Request.Builder()
-                .url("http://192.168.26.138/apiqltv/listnhanvien.php")
+                .url("http://192.168.26.111/apiqltv/listnhanvien.php")
                 .method("GET", null)
                 .addHeader("Content-Type", "application/json")
         //      .addHeader("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZDYzNDk0MjA2NjhkYTBlYTBhNWE2ZjMiLCJpZCI6IjVkNjM0OTQyMDY2OGRhMGVhMGE1YTZmMyIsImlhdCI6MTU2NzEzNTM5NSwiZXhwIjoxNTY5NzI3Mzk1fQ.E3_GLZsQQJ5kczZw-SzdWcf008ZPeQDbb1_Z-gKXfXs")
@@ -70,6 +73,12 @@ public class ActivityNhanvien extends AppCompatActivity {
                     @Override
                     public void run() {
                         lvNhanvien.setAdapter(new NhanVienAdapter(ActivityNhanvien.this, R.layout.item_nhanvien, nhanViens));
+                        lvNhanvien.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                                Toast.makeText(ActivityNhanvien.this, "" + i, Toast.LENGTH_LONG).show();
+                            }
+                        });
                     }
                 });
             }

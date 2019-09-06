@@ -8,8 +8,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
@@ -60,7 +62,8 @@ public class Activitysach extends AppCompatActivity {
         final JsonAdapter<List<Sach>> jsonAdapter = moshi.adapter(sachsType);
         // Tạo request lên server.
         Request request = new Request.Builder()
-                .url("http://192.168.26.138:1337/saches/")
+//                .url("http://192.168.26.111/apiqltv/listSachAll.php")
+                .url("http://192.168.26.111/apiqltv/listSach.php")
                 .method("GET", null)
                 .addHeader("Content-Type", "application/json")
 //                .addHeader("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZDYzNDk0MjA2NjhkYTBlYTBhNWE2ZjMiLCJpZCI6IjVkNjM0OTQyMDY2OGRhMGVhMGE1YTZmMyIsImlhdCI6MTU2NzEzNTM5NSwiZXhwIjoxNTY5NzI3Mzk1fQ.E3_GLZsQQJ5kczZw-SzdWcf008ZPeQDbb1_Z-gKXfXs")
