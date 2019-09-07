@@ -18,23 +18,36 @@
         android:textSize="25sp"
         android:textStyle="bold"></TextView>
 
-    <ImageView
-        android:id="@+id/im_add"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_gravity="right"
-        android:layout_marginRight="20dp"
-        android:src="@drawable/addnew"></ImageView>
-<EditText
-    android:id="@+id/editTenSach"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:orientation="horizontal">
 
-</EditText>
+        <ImageView
+            android:id="@+id/im_add"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="right"
+            android:layout_marginRight="20dp"
+            app:srcCompat="@drawable/addnew1"
+            tools:srcCompat="@drawable/addnew1"></ImageView>
+
+        <ImageView
+            android:id="@+id/im_Exit"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="right"
+            android:layout_marginRight="20dp"
+            app:srcCompat="@drawable/exit"
+            tools:srcCompat="@drawable/exit"></ImageView>
+    </LinearLayout>
+
     <ListView
         android:id="@+id/listSach"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></ListView>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"></ListView>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_sach"

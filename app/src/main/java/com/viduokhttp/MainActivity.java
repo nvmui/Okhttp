@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     ListView lvUser;
     ArrayList<User> arrayUser;
     UserAdapter userAdapter;
+    Activitysach content;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,40 +51,41 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        btnGetUrl = (Button) findViewById(R.id.btnGeturl);
-        btnGetUrl.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, Activitygeturl.class);
-                startActivity(intent);
-            }
-        });
-        downloadBtn = (Button) findViewById(R.id.button);
+//        btnGetUrl = (Button) findViewById(R.id.btnGeturl);
+//        btnGetUrl.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(MainActivity.this, Activitygeturl.class);
+//                startActivity(intent);
+//            }
+//        });
+//        downloadBtn = (Button) findViewById(R.id.button);
         mImage = (ImageView) findViewById(R.id.imageView);
-        downloadBtn.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                downloadBtn.setVisibility(View.INVISIBLE);
-                OkHttpHandler handler = new OkHttpHandler();
-                byte[] image;
-
-                try {
-                    image = handler.execute(URL).get();
-
-                    if (image != null && image.length > 0) {
-
-                        Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0,
-                                image.length);
-                        mImage.setImageBitmap(bitmap);
-                        mImage.setVisibility(View.VISIBLE);
-                    }
-                } catch (Exception e) {
-                    Toast.makeText(getApplicationContext(), "Connect Failed", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-        getData();
+//        downloadBtn.setOnClickListener(new View.OnClickListener() {
+//
+//            @Override
+//            public void onClick(View v) {
+//                downloadBtn.setVisibility(View.INVISIBLE);
+//                OkHttpHandler handler = new OkHttpHandler();
+//                byte[] image;
+//
+//                try {
+//                    image = handler.execute(URL).get();
+//
+//                    if (image != null && image.length > 0) {
+//
+//                        Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0,
+//                                image.length);
+//                        mImage.setImageBitmap(bitmap);
+//                        mImage.setVisibility(View.VISIBLE);
+//                    }
+//                } catch (Exception e) {
+//                    Toast.makeText(getApplicationContext(), "Connect Failed", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        });
+//        getData();
+//        content.getData();
         btnNhanvien = (Button) findViewById(R.id.btnNhanVien);
         btnNhanvien.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
         final JsonAdapter<List<User>> jsonAdapter = moshi.adapter(usersType);
         // Tạo request lên server.
         Request request = new Request.Builder()
-                .url("http://192.168.26.138/apiqltv/listUser.php")
+                .url("http://192.168.1.2:1337/saches")
                 .method("GET", null)
                 .addHeader("Content-Type", "application/json")
                 .addHeader("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZDQ1NTk3MjhiZTA1MzJhZDg3NDFjODMiLCJpZCI6IjVkNDU1OTcyOGJlMDUzMmFkODc0MWM4MyIsImlhdCI6MTU2NTUyOTg4MywiZXhwIjoxNTY4MTIxODgzfQ.cW4UN8vF4Fpn4kmiGwdCbjXWasSKzt_lMlCXmVTq8Yw")

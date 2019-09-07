@@ -1,8 +1,9 @@
 package com.viduokhttp;
 
-import android.provider.MediaStore;
+import java.io.Serializable;
 
-public class Sach {
+public class Sach implements Serializable {
+    public String id;
     public String MaSach;
     public String TenSach;
     public String TenTacGia;

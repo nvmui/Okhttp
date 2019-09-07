@@ -34,8 +34,8 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class Activitysach extends AppCompatActivity {
-    ImageView im_edit, im_delete, im_Add;
-    EditText editSach;
+    ImageView im_edit, im_delete, im_Add, im_Exit;
+    //    EditText editSach;
     TextView txtTenSach;
     ArrayList<Sach> arraySach;
     SachAdapter sachAdapter;
@@ -44,9 +44,15 @@ public class Activitysach extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_activitysach);
-        editSach=(EditText)findViewById(R.id.editTenSach);
+        im_Exit=(ImageView)findViewById(R.id.im_Exit);
         im_edit = (ImageView) findViewById(R.id.im_edit);
         im_delete = (ImageView) findViewById(R.id.im_delete);
+        im_Exit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         im_Add = (ImageView) findViewById(R.id.im_add);
         im_Add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,27 +64,9 @@ public class Activitysach extends AppCompatActivity {
         });
         getData();
     }
-public void UpdateSach(){
-    OkHttpClient client = new OkHttpClient().newBuilder()
-            .build();
-    MediaType mediaType = MediaType.parse("application/json");
-    RequestBody body = RequestBody.create(mediaType, "{\r\n    \"TenSach\": \"Lập trình di động\",\r\n    \"TenTacGia\": \"Nguyễn Đình Thà\",\r\n    \"TenNXB\": \"CĐ Kế Hoạch ĐN\",\r\n    \"NamXB\": \"2019\"\r\n}");
-    Request request = new Request.Builder()
-            .url("192.168.57.191:1337/saches/5d5b920509e75a05c0b79dfb")
-            .method("PUT", body)
-            .addHeader("Content-Type", "application/json")
-            .addHeader("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZDQ1NTk3MjhiZTA1MzJhZDg3NDFjODMiLCJpZCI6IjVkNDU1OTcyOGJlMDUzMmFkODc0MWM4MyIsImlhdCI6MTU2NzY3MTEwMSwiZXhwIjoxNTcwMjYzMTAxfQ.xUdryjfLBwNHMb7LHzIwrVJaML_oOMcT5yL7JTLY1V8")
-            .build();
-    try {
-        Response response = client.newCall(request).execute();
-    } catch (IOException e) {
-        e.printStackTrace();
-    }
-}
+
     public void getData() {
         final ListView listSach = (ListView) findViewById(R.id.listSach);
-        final RecyclerView rvSach = (RecyclerView) findViewById(R.id.rv_sach);
-        rvSach.setLayoutManager(new LinearLayoutManager(this));
         // Khởi tạo OkHttpClient để lấy dữ liệu.
         OkHttpClient client = new OkHttpClient();
         // Khởi tạo Moshi adapter để biến đổi json sang model java (ở đây là User)
@@ -89,7 +77,7 @@ public void UpdateSach(){
         Request request = new Request.Builder()
 //                .url("http://192.168.26.111/apiqltv/listSachAll.php")
 //                .url("http://192.168.57.191/apiqltv/listSach.php")
-                .url("http://192.168.26.111:1337/Saches")
+                .url("http://192.168.1.2:1337/Saches")
                 .method("GET", null)
                 .addHeader("Content-Type", "application/json")
 //                .addHeader("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZDYzNDk0MjA2NjhkYTBlYTBhNWE2ZjMiLCJpZCI6IjVkNjM0OTQyMDY2OGRhMGVhMGE1YTZmMyIsImlhdCI6MTU2NzEzNTM5NSwiZXhwIjoxNTY5NzI3Mzk1fQ.E3_GLZsQQJ5kczZw-SzdWcf008ZPeQDbb1_Z-gKXfXs")
@@ -111,15 +99,7 @@ public void UpdateSach(){
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        listSach.setAdapter( new AdapterSach(Activitysach.this, R.layout.list_item_sach, sach));
-//                        listSach.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//                            @Override
-//                            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                                Sach sach= arraySach.get(i);
-//                                editSach.setText(sach.TenSach);
-//                                Toast.makeText(Activitysach.this, "" + i, Toast.LENGTH_LONG).show();
-//                            }
-//                        });
+                        listSach.setAdapter(new AdapterSach(Activitysach.this, R.layout.list_item_sach, sach));
                     }
                 });
             }

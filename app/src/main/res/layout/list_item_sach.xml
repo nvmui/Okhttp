@@ -40,6 +40,13 @@
             android:layout_height="wrap_content"
             android:textColor="#111" />
 
+        <TextView
+            android:id="@+id/tv_NamXB"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="#111"
+            android:visibility="gone"
+            tools:visibility="gone" />
         <ImageView
             android:id="@+id/im_edit"
             android:layout_width="30dp"
@@ -51,7 +58,7 @@
             android:id="@+id/im_delete"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            app:srcCompat="@drawable/delete"
-            tools:srcCompat="@drawable/delete"></ImageView>
+            app:srcCompat="@drawable/delete1"
+            tools:srcCompat="@drawable/delete1"></ImageView>
     </LinearLayout>
 </LinearLayout>

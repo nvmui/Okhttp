@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:id="@+id/activity_main"
     android:orientation="vertical"
+    android:background="#5FE766"
     tools:context=".MainActivity">
 
     <ImageView
@@ -13,46 +14,32 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="invisible" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:backgroundTint="@android:color/holo_blue_bright"
-        android:textColor="@android:color/white"
-        android:text="@string/download_button"
-        tools:ignore="MissingConstraints" />
-    <Button
-        android:id="@+id/btnGeturl"
-        android:layout_gravity="center"
-        android:text="GetUrl"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints">
-    </Button>
-
+<LinearLayout
+    android:gravity="center"
+    android:layout_marginTop="20dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
     <Button
         android:id="@+id/btnSach"
-        android:layout_width="wrap_content"
-        android:layout_height="38dp"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="List Sách"
         tools:ignore="MissingConstraints"></Button>
     <Button
         android:layout_gravity="center"
         android:id="@+id/btnNhanVien"
-        android:text="Load Nhân Viên"
-        android:layout_width="wrap_content"
+        android:text="Nhân Viên"
+        android:layout_width="100dp"
         android:layout_height="wrap_content">
     </Button>
     <Button
         android:id="@+id/btnTacGia"
-        android:text="List Tác Giả"
+        android:text="Tác Giả"
         android:layout_gravity="center"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"></Button>
+</LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_users"
         android:layout_width="match_parent"
