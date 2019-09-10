@@ -56,7 +56,7 @@ public class ActivityUpdateSach extends AppCompatActivity {
                 String tentacgia = editTenTacGia.getText().toString().trim();
                 String tennxb = editTenNXB.getText().toString().trim();
                 int namxb = Integer.parseInt(editNamXB.getText().toString().trim());
-                new updateSach(tensach, tentacgia, tennxb, namxb).execute("http://192.168.1.2:1337/saches/" + id);
+                new updateSach(tensach, tentacgia, tennxb, namxb).execute("http://192.168.26.111:1337/saches/" + id);
                 finish();
                 Intent intent = new Intent(ActivityUpdateSach.this, Activitysach.class);
                 startActivity(intent);

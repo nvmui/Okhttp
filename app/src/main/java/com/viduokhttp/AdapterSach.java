@@ -94,7 +94,7 @@ public class AdapterSach extends BaseAdapter {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 //                context.DeleteLoaiHang(id);
-                new DeleteSach(id).execute("http://192.168.1.2:1337/Saches/"+id);
+                new DeleteSach(id).execute("http://192.168.26.111:1337/Saches/"+id);
                 context.getData();
             }
         });

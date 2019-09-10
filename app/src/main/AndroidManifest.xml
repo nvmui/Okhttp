@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ActivityUpdateSach"></activity>
+        <activity android:name=".ActivityAddtacgia"></activity>
+        <activity android:name=".ActivityUpdateSach" />
         <activity android:name=".ActivityTacgia" />
         <activity android:name=".ActivityAddsach" />
         <activity android:name=".ActivityNhanvien" />
@@ -22,6 +23,7 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

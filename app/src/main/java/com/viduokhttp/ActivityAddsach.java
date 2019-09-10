@@ -51,7 +51,7 @@ public class ActivityAddsach extends AppCompatActivity {
                 tentacgia = editTenTG.getText().toString().trim();
                 tennxb = editNXB.getText().toString().trim();
                 namxb = Integer.parseInt(editNamXB.getText().toString().trim());
-                new AddSach(masach, tensach, tentacgia, tennxb, namxb).execute("http://192.168.1.2:1337/Saches/");
+                new AddSach(masach, tensach, tentacgia, tennxb, namxb).execute("http://192.168.26.111:1337/Saches/");
 //                new postSach(masach, tensach, tentacgia, tennxb, namxb).execute("http://192.168.56.168/apiqltv/addSach.php");
 //                XoaEditText();
                 finish();

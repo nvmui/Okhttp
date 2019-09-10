@@ -77,7 +77,7 @@ public class Activitysach extends AppCompatActivity {
         Request request = new Request.Builder()
 //                .url("http://192.168.26.111/apiqltv/listSachAll.php")
 //                .url("http://192.168.57.191/apiqltv/listSach.php")
-                .url("http://192.168.1.2:1337/Saches")
+                .url("http://192.168.26.111:1337/Saches")
                 .method("GET", null)
                 .addHeader("Content-Type", "application/json")
 //                .addHeader("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZDYzNDk0MjA2NjhkYTBlYTBhNWE2ZjMiLCJpZCI6IjVkNjM0OTQyMDY2OGRhMGVhMGE1YTZmMyIsImlhdCI6MTU2NzEzNTM5NSwiZXhwIjoxNTY5NzI3Mzk1fQ.E3_GLZsQQJ5kczZw-SzdWcf008ZPeQDbb1_Z-gKXfXs")

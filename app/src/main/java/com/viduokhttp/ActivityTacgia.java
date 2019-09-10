@@ -2,10 +2,12 @@ package com.viduokhttp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -27,11 +29,20 @@ import okhttp3.Response;
 public class ActivityTacgia extends AppCompatActivity {
     ArrayList<TacGia> arrayTacGia;
     TacGiaAdapter tacGiaAdapter;
+    ImageView img_AddTG;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tacgia);
+        img_AddTG=(ImageView)findViewById(R.id.img_AddTG);
+        img_AddTG.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(ActivityTacgia.this, ActivityAddtacgia.class);
+                startActivity(intent);
+            }
+        });
         getData();
     }
 

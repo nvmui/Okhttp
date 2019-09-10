@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -18,7 +17,6 @@ android {
         }
     }
 }
-
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.0.2'
@@ -27,8 +25,8 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'com.squareup.okhttp3:okhttp:3.8.0'
-    implementation 'com.squareup.okio:okio:1.6.0'
     implementation 'com.squareup.moshi:moshi:1.2.0'
+    implementation 'com.squareup.okio:okio:1.6.0'
     implementation 'com.squareup.picasso:picasso:2.5.2'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
 }
