@@ -103,7 +103,7 @@
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="List Sách"
+                android:text="Xem Sách"
                 tools:ignore="MissingConstraints"></Button>
 
             <Button

@@ -29,6 +29,7 @@ public class ActivityAddsach extends AppCompatActivity {
     EditText editMaSach, editTenSach, editTenTG, editNXB, editNamXB;
     Button btnAdd, btnExit;
     ListView lvSach;
+    config url;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

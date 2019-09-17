@@ -62,7 +62,7 @@
             android:id="@+id/btnUpdate"
             android:layout_width="150dp"
             android:layout_height="50dp"
-            android:text="Upadte"/>
+            android:text="Cập nhật"/>
         <Button
             android:id="@+id/btnThoat"
             android:layout_width="150dp"
