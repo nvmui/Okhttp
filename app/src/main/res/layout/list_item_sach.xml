@@ -47,6 +47,7 @@
             android:textColor="#111"
             android:visibility="gone"
             tools:visibility="gone" />
+
         <ImageView
             android:id="@+id/im_edit"
             android:layout_width="30dp"

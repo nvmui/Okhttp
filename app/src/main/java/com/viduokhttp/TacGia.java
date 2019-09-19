@@ -1,6 +1,8 @@
 package com.viduokhttp;
 
-public class TacGia {
+import java.io.Serializable;
+
+public class TacGia implements Serializable {
     public String MaTG;
     public String TenTacGia;
     public String DiaChi;

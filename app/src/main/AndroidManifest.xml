@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ActivityAddtacgia"></activity>
+        <activity android:name=".ActivityUpdatetacgia"></activity>
+        <activity android:name=".ActivityAddtacgia" />
         <activity android:name=".ActivityUpdateSach" />
         <activity android:name=".ActivityTacgia" />
         <activity android:name=".ActivityAddsach" />

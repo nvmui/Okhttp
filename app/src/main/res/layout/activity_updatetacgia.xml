@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#8BC34A"
+    android:orientation="vertical"
+    tools:context=".ActivityUpdatetacgia">
+    <TextView
+        android:text="CẬP NHẬP TÁC GIẢ"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textColor="#111"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </TextView>
+    <LinearLayout
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/editMaTG"
+            android:layout_width="120dp"
+            android:hint="Nhập mã TG"
+            android:layout_height="wrap_content">
+        </EditText>
+        <EditText
+            android:id="@+id/editTenTG"
+            android:layout_width="250dp"
+            android:hint="Nhập tên TG"
+            android:layout_height="wrap_content">
+        </EditText>
+        <EditText
+            android:id="@+id/editDiaChiTG"
+            android:layout_width="350dp"
+            android:hint="Nhập địa chỉ TG"
+            android:layout_height="wrap_content">
+        </EditText>
+        <EditText
+            android:id="@+id/editEmailTG"
+            android:layout_width="350dp"
+            android:hint="Nhập email TG"
+            android:layout_height="wrap_content">
+        </EditText>
+        <EditText
+            android:id="@+id/editDienThoaiTG"
+            android:layout_width="250dp"
+            android:hint="Nhập số điện TG"
+            android:layout_height="wrap_content">
+        </EditText>
+    </LinearLayout>
+    <LinearLayout
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/btnAddTG"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="Cập nhật"></Button>
+        <Button
+            android:id="@+id/btnExitTG"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="Thoát"></Button>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,12 +1,14 @@
 package com.viduokhttp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -38,6 +40,7 @@ public class TacGiaAdapter extends BaseAdapter {
 
     private class ViewHolder {
         TextView tvTen, tvDiaChi, tvDienThoai, matg;
+        ImageView img_Edit;
     }
 
     @Override
@@ -51,6 +54,7 @@ public class TacGiaAdapter extends BaseAdapter {
             holder.tvTen = (TextView) view.findViewById(R.id.tv_TenTG);
             holder.tvDiaChi = (TextView) view.findViewById(R.id.tv_DiaChi);
             holder.tvDienThoai = (TextView) view.findViewById(R.id.tv_DienThoai);
+            holder.img_Edit = (ImageView) view.findViewById(R.id.img_editTG);
             view.setTag(holder);
         } else {
             holder = (ViewHolder) view.getTag();
@@ -60,6 +64,15 @@ public class TacGiaAdapter extends BaseAdapter {
         holder.tvTen.setText(tacGia.TenTacGia);
         holder.tvDiaChi.setText(tacGia.DiaChi);
         holder.tvDienThoai.setText(tacGia.DienThoai);
+        holder.img_Edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                Toast.makeText(context,"Tác giả có mã là: "+tacGia.MaTG,Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(context, ActivityUpdatetacgia.class);
+                intent.putExtra("tacgia", tacGia);
+                context.startActivity(intent);
+            }
+        });
         return view;
     }
 }
