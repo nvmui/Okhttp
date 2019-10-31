@@ -40,7 +40,7 @@ public class DeleteSach extends AsyncTask<String, Void, String> {
 //                .url("http://192.168.1.2:1337/saches/" + id)
                 .url(strings[0])
                 .method("DELETE", body)
-                .addHeader("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZDQ1NTk3MjhiZTA1MzJhZDg3NDFjODMiLCJpZCI6IjVkNDU1OTcyOGJlMDUzMmFkODc0MWM4MyIsImlhdCI6MTU2NzY3MTEwMSwiZXhwIjoxNTcwMjYzMTAxfQ.xUdryjfLBwNHMb7LHzIwrVJaML_oOMcT5yL7JTLY1V8")
+                .addHeader("Authorization", new config().token)
                 .build();
         try {
             Response response = client.newCall(request).execute();

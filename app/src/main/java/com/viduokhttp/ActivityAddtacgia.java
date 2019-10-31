@@ -35,7 +35,7 @@ public class ActivityAddtacgia extends AppCompatActivity {
                 String diachi=editDiaChiTG.getText().toString().trim();
                 String email=editEmail.getText().toString().trim();
                 String dienthoai=editSoDienThoaiTG.getText().toString().trim();
-                new postTacGia(matg,tentg,diachi,email,dienthoai).execute("http://192.168.26.111/apiqltv/insertTacGia.php");
+                new postTacGia(matg,tentg,diachi,email,dienthoai).execute(new config().urlphp+"insertTacGia.php");
                 finish();
                 Intent intent =new Intent(ActivityAddtacgia.this,ActivityTacgia.class);
                 startActivity(intent);
@@ -80,17 +80,6 @@ public class ActivityAddtacgia extends AppCompatActivity {
                     .url(strings[0])
                     .post(requestBody)
                     .build();
-//
-//
-//            MediaType mediaType = MediaType.parse("application/json");
-//            RequestBody body = RequestBody.create(mediaType, "{\r\n\t\"MaTG\": \"3\",\r\n    \"TenTacGia\": \"Nguyễn Văn An\",\r\n    \"DiaChi\": \"143 Nguyễn Lương Bằng\",\r\n    \"Email\": \"vanan@gmail.com\",\r\n    \"DienThoai\": \"0905873735\"\r\n}");
-//            Request request = new Request.Builder()
-//                    .url("192.168.26.111/apiqltv/insertTacGia.php")
-//                    .method("POST", body)
-//                    .addHeader("Content-Type", "application/json")
-//                    .build();
-//            Response response = client.newCall(request).execute();
-
             try {
                 Response response = okHttpClient.newCall(request).execute();
                 return response.body().string();

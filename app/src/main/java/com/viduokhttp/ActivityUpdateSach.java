@@ -56,7 +56,7 @@ public class ActivityUpdateSach extends AppCompatActivity {
                 String tentacgia = editTenTacGia.getText().toString().trim();
                 String tennxb = editTenNXB.getText().toString().trim();
                 int namxb = Integer.parseInt(editNamXB.getText().toString().trim());
-                new updateSach(tensach, tentacgia, tennxb, namxb).execute("http://192.168.26.111:1337/saches/" + id);
+                new updateSach(tensach, tentacgia, tennxb, namxb).execute(new config().url+"saches/" + id);
                 finish();
                 Intent intent = new Intent(ActivityUpdateSach.this, Activitysach.class);
                 startActivity(intent);
@@ -87,7 +87,6 @@ public class ActivityUpdateSach extends AppCompatActivity {
             this.tennxb = tennxb;
             this.namxb = namxb;
         }
-
         @Override
         protected String doInBackground(String... strings) {
             MediaType mediaType = MediaType.parse("application/json");
@@ -107,7 +106,7 @@ public class ActivityUpdateSach extends AppCompatActivity {
                     .url(strings[0])
                     .method("PUT", body)
                     .addHeader("Content-Type", "application/json")
-                    .addHeader("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZDQ1NTk3MjhiZTA1MzJhZDg3NDFjODMiLCJpZCI6IjVkNDU1OTcyOGJlMDUzMmFkODc0MWM4MyIsImlhdCI6MTU2NzY3MTEwMSwiZXhwIjoxNTcwMjYzMTAxfQ.xUdryjfLBwNHMb7LHzIwrVJaML_oOMcT5yL7JTLY1V8")
+                    .addHeader("Authorization", new config().token)
                     .build();
             try {
                 Response response = okHttpClient.newCall(request).execute();

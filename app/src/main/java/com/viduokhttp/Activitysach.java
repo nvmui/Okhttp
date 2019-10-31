@@ -45,7 +45,7 @@ public class Activitysach extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_activitysach);
-        im_Exit=(ImageView)findViewById(R.id.im_Exit);
+        im_Exit = (ImageView) findViewById(R.id.im_Exit);
         im_edit = (ImageView) findViewById(R.id.im_edit);
         im_delete = (ImageView) findViewById(R.id.im_delete);
         im_Exit.setOnClickListener(new View.OnClickListener() {
@@ -70,19 +70,16 @@ public class Activitysach extends AppCompatActivity {
         final ListView listSach = (ListView) findViewById(R.id.listSach);
         // Khởi tạo OkHttpClient để lấy dữ liệu.
         OkHttpClient client = new OkHttpClient();
-        // Khởi tạo Moshi adapter để biến đổi json sang model java (ở đây là User)
+        // Khởi tạo Moshi adapter để biến đổi json sang model java
         Moshi moshi = new Moshi.Builder().build();
         Type sachsType = Types.newParameterizedType(List.class, Sach.class);
         final JsonAdapter<List<Sach>> jsonAdapter = moshi.adapter(sachsType);
         // Tạo request lên server.
         Request request = new Request.Builder()
-//                .url("http://192.168.26.111/apiqltv/listSachAll.php")
-//                .url("http://192.168.57.191/apiqltv/listSach.php")
-                .url("http://192.168.26.111:1337/Saches/")
+                .url(new config().url + "Saches")
                 .method("GET", null)
                 .addHeader("Content-Type", "application/json")
-//                .addHeader("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZDYzNDk0MjA2NjhkYTBlYTBhNWE2ZjMiLCJpZCI6IjVkNjM0OTQyMDY2OGRhMGVhMGE1YTZmMyIsImlhdCI6MTU2NzEzNTM5NSwiZXhwIjoxNTY5NzI3Mzk1fQ.E3_GLZsQQJ5kczZw-SzdWcf008ZPeQDbb1_Z-gKXfXs")
-                .addHeader("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZDQ1NTk3MjhiZTA1MzJhZDg3NDFjODMiLCJpZCI6IjVkNDU1OTcyOGJlMDUzMmFkODc0MWM4MyIsImlhdCI6MTU2NzE0NDAzMSwiZXhwIjoxNTY5NzM2MDMxfQ.WcJZ-tnYoPBivI9oCS682MfXAgSSXKFIsEyIh_nCckU")
+                .addHeader("Authorization", new config().token)
                 .build();
         // Thực thi request.
         client.newCall(request).enqueue(new Callback() {

@@ -27,19 +27,19 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class ActivityTacgia extends AppCompatActivity {
-    ArrayList<TacGia> arrayTacGia;
-    TacGiaAdapter tacGiaAdapter;
+//    ArrayList<TacGia> arrayTacGia;
+//    TacGiaAdapter tacGiaAdapter;
     ImageView img_AddTG;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tacgia);
-        img_AddTG=(ImageView)findViewById(R.id.img_AddTG);
+        img_AddTG = (ImageView) findViewById(R.id.img_AddTG);
         img_AddTG.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(ActivityTacgia.this, ActivityAddtacgia.class);
+                Intent intent = new Intent(ActivityTacgia.this, ActivityAddtacgia.class);
                 startActivity(intent);
             }
         });
@@ -49,13 +49,13 @@ public class ActivityTacgia extends AppCompatActivity {
     private void getData() {
         final ListView listTacGia = (ListView) findViewById(R.id.listTacGia);
         //khai báo thư viện client
-        OkHttpClient okHttpClient=new OkHttpClient();
+        OkHttpClient okHttpClient = new OkHttpClient();
         Moshi moshi = new Moshi.Builder().build();
         Type tacGiaType = Types.newParameterizedType(List.class, TacGia.class);
         final JsonAdapter<List<TacGia>> jsonAdapter = moshi.adapter(tacGiaType);
 
         Request request = new Request.Builder()
-                .url("http://192.168.26.111/apiqltv/listTacGiaAll.php")
+                .url(new config().urlphp+"listTacGiaAll.php")
                 .method("GET", null)
                 .build();
         //Response response = okHttpClient.newCall(request).execute();
@@ -64,6 +64,7 @@ public class ActivityTacgia extends AppCompatActivity {
             public void onFailure(Call call, IOException e) {
                 Log.e("Error aa", "Network Error");
             }
+
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 // Lấy thông tin JSON trả về. Bạn có thể log lại biến json này để xem nó như thế nào.

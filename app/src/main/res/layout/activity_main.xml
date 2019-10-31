@@ -25,7 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Nhóm NCKH - 2019"
+            android:text="NHÓM NCKH - 2019"
             android:textColor="#111"
             android:textSize="30sp"
             android:textStyle="bold"></TextView>

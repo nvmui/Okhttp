@@ -115,10 +115,10 @@ public class MainActivity extends AppCompatActivity {
         final JsonAdapter<List<User>> jsonAdapter = moshi.adapter(usersType);
         // Tạo request lên server.
         Request request = new Request.Builder()
-                .url("http://192.168.0.146:1337/saches")
+                .url(new config().url+ "saches")
                 .method("GET", null)
                 .addHeader("Content-Type", "application/json")
-                .addHeader("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZDQ1NTk3MjhiZTA1MzJhZDg3NDFjODMiLCJpZCI6IjVkNDU1OTcyOGJlMDUzMmFkODc0MWM4MyIsImlhdCI6MTU2NTUyOTg4MywiZXhwIjoxNTY4MTIxODgzfQ.cW4UN8vF4Fpn4kmiGwdCbjXWasSKzt_lMlCXmVTq8Yw")
+                .addHeader("Authorization", new config().token)
                 .build();
         // Thực thi request.
         client.newCall(request).enqueue(new Callback() {

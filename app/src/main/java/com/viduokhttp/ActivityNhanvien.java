@@ -48,11 +48,11 @@ public class ActivityNhanvien extends AppCompatActivity {
         final JsonAdapter<List<NhanVien>> jsonAdapter = moshi.adapter(nhanvienType);
         // Tạo request lên server.
         Request request = new Request.Builder()
-                .url("http://192.168.26.111/apiqltv/listnhanvien.php")
+                .url(new config().urlphp+"listnhanvien.php")
                 .method("GET", null)
                 .addHeader("Content-Type", "application/json")
         //      .addHeader("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZDYzNDk0MjA2NjhkYTBlYTBhNWE2ZjMiLCJpZCI6IjVkNjM0OTQyMDY2OGRhMGVhMGE1YTZmMyIsImlhdCI6MTU2NzEzNTM5NSwiZXhwIjoxNTY5NzI3Mzk1fQ.E3_GLZsQQJ5kczZw-SzdWcf008ZPeQDbb1_Z-gKXfXs")
-                .addHeader("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZDQ1NTk3MjhiZTA1MzJhZDg3NDFjODMiLCJpZCI6IjVkNDU1OTcyOGJlMDUzMmFkODc0MWM4MyIsImlhdCI6MTU2NzE0NDAzMSwiZXhwIjoxNTY5NzM2MDMxfQ.WcJZ-tnYoPBivI9oCS682MfXAgSSXKFIsEyIh_nCckU")
+                .addHeader("Authorization", new config().token)
                 .build();
         // Thực thi request.
         client.newCall(request).enqueue(new Callback() {

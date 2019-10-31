@@ -49,7 +49,7 @@ public class ActivityUpdatetacgia extends AppCompatActivity {
                 String diachi = editDiaChiTG.getText().toString().trim();
                 String email = editEmail.getText().toString().trim();
                 String sodt = editSoDienThoaiTG.getText().toString().trim();
-                new updateTacGia(matg, tentg, diachi, email, sodt).execute("http://192.168.26.111/apiqltv/updateTacGia.php");
+                new updateTacGia(matg, tentg, diachi, email, sodt).execute(new config().urlphp+"updateTacGia.php");
                 finish();
                 Intent intent = new Intent(ActivityUpdatetacgia.this, ActivityTacgia.class);
                 startActivity(intent);
@@ -78,7 +78,6 @@ public class ActivityUpdatetacgia extends AppCompatActivity {
         String matg, tentg, diachitg, emailtg, sodttg;
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 .build();
-
         public updateTacGia(String matg, String tentg, String diachitg, String emailtg, String sodttg) {
             this.matg = matg;
             this.tentg = tentg;
